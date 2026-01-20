@@ -1,67 +1,163 @@
-// Your header comment goes here.
-
 public class RocketShip {
+
     public static final int ROCKET_SIZE = 3;
-    
-    public static void main( String[] args ) {
-        printNoseCone();
+
+/*
+Desired Output:
+
+     /**\
+    //**\\
+   ///**\\\
+  ////**\\\\
+ /////**\\\\\
++=*=*=*=*=*=*+
+|../\..../\..|
+|./\/\../\/\.|
+|/\/\/\/\/\/\|
+|\/\/\/\/\/\/|
+|.\/\/..\/\/.|
+|..\/....\/..|
++=*=*=*=*=*=*+
+|\/\/\/\/\/\/|
+|.\/\/..\/\/.|
+|..\/....\/..|
+|../\..../\..|
+|./\/\../\/\.|
+|/\/\/\/\/\/\|
++=*=*=*=*=*=*+
+     /**\
+    //**\\
+   ///**\\\
+  ////**\\\\
+ /////**\\\\\
+ 
+*/
+    // Main
+    public static void main(String[] args) {
+        // 3 Part Method
+		printNoseCone();
         printBody();
         printNozzle();
     }
 
-    /**
-     Print the nozzle at the bottom of the rocket.
-     This reuses the pattern of the nose cone.
-     */
+    // Reuse the nose cone for the nozzle
     public static void printNozzle() {
         printNoseCone();
     }
-    
-    /**
-     Print the nose cone. There is a pattern of **
-     down the middle of the cone with a widening pattern
-     of //...\\ on either side.
-     */
+
+    // Method 1 and 3: Prints the top/bottom cone
     public static void printNoseCone() {
-        // your code goes here.
-        System.out.println("A nose cone should be here.");
+        for (int i = 1; i <= 5; i++) {
+
+            // LeadingSpaces ( )
+            for (int s = 1; s <= 6 - i; s++) {
+                System.out.print(" ");
+            }
+
+            // ForwardSlashes (//)
+            for (int f = 1; f <= i; f++) {
+                System.out.print("/");
+            }
+
+            // Middle Stars (**)
+            System.out.print("**");
+
+            // BackSlashes (\\)
+            for (int b = 1; b <= i; b++) {
+                System.out.print("\\");
+            }
+
+            System.out.println();
+        }
     }
-    
-    /**
-      Print body of rocket. This is a two-stage pattern
-      with a diamond pattern in the top half and an
-      hour glass on the bottom.
-     */
+
+// Method 2: RocketBody (Entire Middle Section)
     public static void printBody() {
+        // Helper Methods (to print edges and individual parts of the body)
         printEdge();
         printDiamondTop();
-        printDiamondBottom();        
+        printDiamondBottom();
         printEdge();
-        printDiamondBottom();        
-        printDiamondTop();       
-        printEdge();        
+        printDiamondBottom();
+        printDiamondTop();
+        printEdge();
     }
-    
-    /**
-     Print the top half of two diamonds between vertical lines.
-     */
-    public static void printDiamondTop() {
-        // your code goes here.
-        System.out.println("A diamond top should be here.");
-    }
-    
-    /**
-     Print the bottom half of two diamonds between vertical lines.
-     */
-    public static void printDiamondBottom() {
-        // your code goes here.
-        System.out.println("A diamond bottom should be here.");
-    }
-    /**
-      Print +=*=*=*...=+ to fit the width of the rocket.
-     */
+
+    // Print Edge(s) (+=*=*=*=*=*=*+)
     public static void printEdge() {
-        // your code goes here.
-        System.out.println("An edge should be here.");
+        System.out.print("+");
+        for (int i = 0; i < 6; i++) {
+            System.out.print("=*");
+        }
+        System.out.println("+");
+    }
+
+    /* Fully loop‑based version of:
+									 |../\..../\..|
+									 |./\/\../\/\.|
+									 |/\/\/\/\/\/\|
+	*/
+    // TopDiamond
+	public static void printDiamondTop() {
+        int rows = ROCKET_SIZE;
+		// Loop Rows
+        for (int r = 1; r <= rows; r++) {
+            System.out.print("|");
+
+            int dots = rows - r;
+            int pairs = r;
+            int middleDots = 2 * dots;
+
+            // LeadingDots
+            for (int i = 0; i < dots; i++) System.out.print(".");
+
+            // First /\ 
+            for (int i = 0; i < pairs; i++) System.out.print("/\\");
+
+            // MiddleDots
+            for (int i = 0; i < middleDots; i++) System.out.print(".");
+
+            // Second  /\ 
+            for (int i = 0; i < pairs; i++) System.out.print("/\\");
+
+            // TrailingDots
+            for (int i = 0; i < dots; i++) System.out.print(".");
+
+            System.out.println("|");
+        }
+    }
+    /*  Fully loop‑based version of:
+									 |\/\/\/\/\/\/|
+									 |.\/\/..\/\/.|
+									 |..\/....\/..|
+	*/
+	// BottomDiamond
+    public static void printDiamondBottom() {
+        int rows = ROCKET_SIZE;
+		// Loop Rows
+        for (int r = rows; r >= 1; r--) {
+            System.out.print("|");
+
+            int dots = rows - r;
+            int pairs = r;
+            int middleDots = 2 * dots;
+
+            // LeadingDots
+            for (int i = 0; i < dots; i++) System.out.print(".");
+
+            // First \/ 
+            for (int i = 0; i < pairs; i++) System.out.print("\\/");
+
+            // MiddleDots
+            for (int i = 0; i < middleDots; i++) System.out.print(".");
+
+            // Second \/ 
+            for (int i = 0; i < pairs; i++) System.out.print("\\/");
+
+            // TrailingDots
+            for (int i = 0; i < dots; i++) System.out.print(".");
+
+            System.out.println("|");
+        }
     }
 }
