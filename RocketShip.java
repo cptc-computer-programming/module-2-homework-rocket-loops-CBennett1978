@@ -2,14 +2,16 @@
 
 public class RocketShip {
     public static final int ROCKET_SIZE = 3;
-    
+    // Main Method 
     public static void main( String[] args ) {
-        printNoseCone();
-        printBody();
-        printNozzle();
+        
+        // Three Part Method
+        printNoseCone();// Top of Rocket
+        printBody();    // Body of Rocket (Middle)
+        printNozzle();  // Bottom of Rocket (same as Nose Cone)
     }
 
-    /**
+    /*
      Print the nozzle at the bottom of the rocket.
      This reuses the pattern of the nose cone.
      */
@@ -17,17 +19,42 @@ public class RocketShip {
         printNoseCone();
     }
     
-    /**
-     Print the nose cone. There is a pattern of **
-     down the middle of the cone with a widening pattern
-     of //...\\ on either side.
+    /*
+	Method 1
+     Print the nose cone. 
+     There is a pattern of ** down the middle of the cone, 
+     with a widening pattern of //...\\ on either side.
      */
-    public static void printNoseCone() {
-        // your code goes here.
-        System.out.println("A nose cone should be here.");
-    }
     
-    /**
+	public static void printNoseCone() {
+    int totalRows = ROCKET_SIZE * 2;
+
+    for (int i = 1; i <= totalRows; i++) {
+
+        // 1. Leading spaces
+        for (int s = 1; s <= totalRows - i; s++) {
+            System.out.print(" ");
+        }
+
+        // 2. Left slashes
+        for (int ls = 1; ls <= i; ls++) {
+            System.out.print("/");
+        }
+
+        // 3. Middle stars
+        System.out.print("**");
+
+        // 4. Right slashes
+        for (int rs = 1; rs <= i; rs++) {
+            System.out.print("\\");
+        }
+
+        System.out.println();
+    }
+}
+    
+    /*
+    Method 2
       Print body of rocket. This is a two-stage pattern
       with a diamond pattern in the top half and an
       hour glass on the bottom.
