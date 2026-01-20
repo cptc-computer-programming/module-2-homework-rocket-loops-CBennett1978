@@ -55,10 +55,13 @@ public class RocketShip {
     
     /*
     Method 2
-      Print body of rocket. This is a two-stage pattern
-      with a diamond pattern in the top half and an
+      Print body of rocket. 
+	  This is a two-stage pattern with a 
+	  diamond pattern in the top half 
+	  and an
       hour glass on the bottom.
-     */
+    */
+	 
     public static void printBody() {
         printEdge();
         printDiamondTop();
@@ -69,13 +72,45 @@ public class RocketShip {
         printEdge();        
     }
     
-    /**
+    /*
      Print the top half of two diamonds between vertical lines.
-     */
+    */
+	 
     public static void printDiamondTop() {
-        // your code goes here.
-        System.out.println("A diamond top should be here.");
+       
+    int rows = ROCKET_SIZE;
+	// Loop Rows
+    for (int i = 1; i <= rows; i++) {
+        System.out.print("|");
+
+        // 1. Leading dots
+        for (int d = 1; d <= rows - i; d++) {
+            System.out.print(".");
+        }
+
+        // 2. First diamond: i pairs of /\
+        for (int p = 1; p <= i; p++) {
+            System.out.print("/\\");
+        }
+
+        // 3. Middle dots between the two diamonds
+        for (int d = 1; d <= 2 * (rows - i); d++) {
+            System.out.print(".");
+        }
+
+        // 4. Second diamond: i pairs of /\
+        for (int p = 1; p <= i; p++) {
+            System.out.print("/\\");
+        }
+
+        // 5. Trailing dots
+        for (int d = 1; d <= rows - i; d++) {
+            System.out.print(".");
+        }
+
+        System.out.println("|");
     }
+}
     
     /**
      Print the bottom half of two diamonds between vertical lines.
