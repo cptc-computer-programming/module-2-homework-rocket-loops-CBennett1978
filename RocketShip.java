@@ -49,20 +49,20 @@ Desired Output:
     public static void printNoseCone() {
         for (int i = 1; i <= 5; i++) {
 
-            // leading spaces
+            // LeadingSpaces ( )
             for (int s = 1; s <= 6 - i; s++) {
                 System.out.print(" ");
             }
 
-            // forward slashes
+            // ForwardSlashes (//)
             for (int f = 1; f <= i; f++) {
                 System.out.print("/");
             }
 
-            // middle **
+            // Middle Stars (**)
             System.out.print("**");
 
-            // back slashes
+            // BackSlashes (\\)
             for (int b = 1; b <= i; b++) {
                 System.out.print("\\");
             }
@@ -73,6 +73,7 @@ Desired Output:
 
 // Method 2: RocketBody (Entire Middle Section)
     public static void printBody() {
+        // Helper Methods (to print edges and individual parts of the body)
         printEdge();
         printDiamondTop();
         printDiamondBottom();
